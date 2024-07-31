@@ -82,3 +82,30 @@ function mostraPergunta(){
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = ""
 }
+
+function mostraAlternativa(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativa.addEventListener("click",()=>respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativa);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual ++;
+    mostraPergunta();
+    
+  }
+
+  unction mostraResultado(){
+    caixaPerguntas.textContent = "De acordo com suas respostas...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+
+
+}
+
+mostraPergunta();
